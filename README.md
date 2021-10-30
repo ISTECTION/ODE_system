@@ -24,11 +24,10 @@ q^n(t)=
 
 
 * С помощью двух шагов _**h1**_ и _**h2**_ проинтегрировать систему
-$$h1=1e-4$$
-$$h2=1e-5$$
 
+<img src="https://render.githubusercontent.com/render/math?math=h1=1e-4"> <br>
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=%5Cbegin%7Bequation%2A%7D%0A%20%20%20%20%5Cbegin%7Bcases%7D%0A%20%20%20%20%20%20%20%20%7Bdp_1%28t%29%20%5Cover%20dt%7D%20%3D%20%7Bq%5En%28t%29-q_2%28t%29%20%5Cover%20C%7D%5C%5C%0A%20%20%20%20%20%20%20%20%7Bdq_2%28t%29%20%5Cover%20dt%7D%20%3D%20%7B%5Csqrt%7B%5Czeta%7Cp_1%28t%29-p%5E%7B%D0%B0%D1%82%D0%BC%7D%7C%20%5Cover%202%5Crho%7D%20%5Cleft%28S%20%5Csqrt%7B2%7Cp_1%28t%29-p%5E%7B%D0%B0%D1%82%D0%BC%7D%7C%20%5Cover%20%5Crho%5Czeta%7D%20sign%20%5Cleft%28p_1%28t%29%20-%20p%5E%7B%D0%B0%D1%82%D0%BC%7D%5Cright%29%20-q_2%28t%29%20%5Cright%29%20%20%7D%0A%20%20%20%20%5Cend%7Bcases%7D%0A%5Cend%7Bequation%2A%7D&bc=Transparent&fc=Black&im=png&fs=18&ff=mathdesign&edit=0)
+<img src="https://render.githubusercontent.com/render/math?math=h2=1e-5">
 
 
 $$\begin{equation*}
