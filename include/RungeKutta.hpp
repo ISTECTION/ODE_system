@@ -15,7 +15,7 @@ namespace _vec {
 
 const size_t N = 2;
 
-int sign(double _n) { return (_n < 0 ? -1 : (_n > 0 ? 1 : 0)); }
+double sign(double _n) { return (_n < 0 ? -1 : (_n > 0 ? 1 : 0)); }
 
 std::tuple<double, double> f(double t, const _vec::_double &y) {
     double dq = t > 1 ?
@@ -26,7 +26,7 @@ std::tuple<double, double> f(double t, const _vec::_double &y) {
 
     return {
         dq / Data::C,
-        Data::B * sqrt(Data::Zeta * abs(dp)) * (Data::F * sqrt(2 * abs(dp)) * sign(dp) - y[1])
+        Data::B * sqrt(Data::Zeta * fabs(dp)) * (Data::F * sqrt(2 * fabs(dp)) * sign(dp) - y[1])
     };
 }
 
@@ -41,9 +41,8 @@ public:
 
 private:
     std::tuple<double, double> RungeKutta4(double, double, const _vec::_double &);
+
     void writeFile(std::filesystem::path _Path, std::ostringstream &ostream, double h) const;
-
-
 };
 
 void RungeKutta::RungeKuttaSys(double _h) {
@@ -52,9 +51,9 @@ void RungeKutta::RungeKuttaSys(double _h) {
 
     double t = Data::t0, h = _h;
     _vec::_double y { Data::P_atm, 0 };
-    _vec::_double _y_next(N);
 
 
+    ostream << std::fixed;
     ostream.precision(6); ostream << std::setw(8) << t;
 
     ostream << std::setw(20) << std::scientific << y[0]
@@ -63,16 +62,12 @@ void RungeKutta::RungeKuttaSys(double _h) {
 
     for (double _s = t + h; _s <= Data::t1; _s += h) {
 
-        std::tie(_y_next[0], _y_next[1]) = RungeKutta4(_s - h, h, y);
+        std::tie(y[0], y[1]) = RungeKutta4(_s - h, h, y);
 
         ostream.precision(6); ostream << std::setw(8) << _s;
 
-        y[0] = _y_next[0];
-        y[1] = _y_next[1];
-
         ostream << std::setw(20) << std::scientific << y[0]
                 << std::setw(16) << std::fixed      << y[1] << std::endl;
-
     }
     writeFile("file", ostream, h);
 }
@@ -92,7 +87,7 @@ std::tuple<double, double> RungeKutta::RungeKutta4(double t, double h, const _ve
 
     std::tie(k3[0], k3[1]) = f(t + 0.5 * h, _y);
     for (size_t i = 0; i < N; i++)
-        _y[i] = y[i] + 0.5 * h * k3[i];
+        _y[i] = y[i] + h * k3[i];
 
     std::tie(k4[0], k4[1]) = f(t + h, _y);
 

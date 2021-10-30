@@ -5,7 +5,6 @@
 
 int main(int argc, char* agrv[]) {
 
-
     RungeKutta a;
     a.RungeKuttaSys();
 
