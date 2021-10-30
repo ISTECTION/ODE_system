@@ -23,6 +23,9 @@ namespace Data
     const double Zeta  = 1 - cos(Alpha);
     const double S     = Alpha * d * d;
     const double C     = l * S / (Ro * C_snd * C_snd);
+
+    const double B = 1 / sqrt(2    * Ro);
+    const double F = S / sqrt(Zeta * Ro);
 }
 
 #endif // _DATA_HPP_
