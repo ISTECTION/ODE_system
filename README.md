@@ -27,6 +27,10 @@ q^n(t)=
 $$h1=1e-4$$
 $$h2=1e-5$$
 
+
+![equation](https://bit.ly/3mrNvP6)
+
+
 $$\begin{equation*}
     \begin{cases}
         {dp_1(t) \over dt} = {q^n(t)-q_2(t) \over C}\\
